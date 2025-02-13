@@ -7,10 +7,12 @@
     </div>
   </div>
   <ul class="nav-list">
-    <li><a routerLink="/" class="active">KEZDŐLAP</a></li>
-    <li><a routerLink="about">RÓLAM</a></li>
+    <li>
+      <a routerLink="/" routerLinkActive="active">KEZDŐLAP</a>
+    </li>
+    <li><a routerLink="about" routerLinkActive="active">RÓLAM</a></li>
     <li class="dropdown">
-      <a href="#">CSOMAGOK &#9662;</a>
+      <a routerLink="packages" routerLinkActive="active">CSOMAGOK &#9662;</a>
       <ul class="dropdown-menu">
         <li><a href="#">Option 1</a></li>
         <li><a href="#">Option 2</a></li>

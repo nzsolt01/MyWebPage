@@ -55,6 +55,8 @@
 
 .nav-list a.active {
   color: #3A7CA5; /* Dark Blue */
+  font-weight: bold;
+  border-bottom: 2px solid darkblue;
 }
 
 .nav-list a:hover {

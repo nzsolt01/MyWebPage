@@ -2,24 +2,31 @@
   <div class="logo">
     <img src="assets/logo.png" alt="Németh Zsolt Logo" class="logo-img" />
     <div class="text-container">
-      <span class="name">NÉMETH ZSOLT</span>
-      <span class="profession">TANÁCSADÁS</span>
+      <span class="name">Németh Zsolt</span>
+      <span class="profession">tanácsadó</span>
     </div>
   </div>
   <ul class="nav-list">
     <li>
       <a routerLink="/" routerLinkActive="active">KEZDŐLAP</a>
     </li>
-    <li><a routerLink="about" routerLinkActive="active">RÓLAM</a></li>
-    <li class="dropdown">
-      <a routerLink="packages" routerLinkActive="active">CSOMAGOK &#9662;</a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Option 1</a></li>
-        <li><a href="#">Option 2</a></li>
-      </ul>
+    <li><a routerLink="/rolam" routerLinkActive="active">RÓLAM</a></li>
+    <li><a routerLink="/csomagok" routerLinkActive="active">CSOMAGOK</a></li>
+    <li>
+      <a routerLink="/adotanacsadas" routerLinkActive="active">ADÓTANÁCSADÁS</a>
     </li>
-    <li><a href="#">TANÁCSADÁS</a></li>
-    <li><a href="#">BLOG</a></li>
-    <li><a href="#">KAPCSOLAT</a></li>
+    <li><a routerLink="/blog" routerLinkActive="active">BLOG</a></li>
+    <li><a routerLink="/kapcsolat" routerLinkActive="active">KAPCSOLAT</a></li>
   </ul>
+  <div class="auth-section">
+    @if (!isLoggedIn) {
+      <button (click)="openModal()" class="login-btn">Bejelentkezés</button>
+    } @else {
+      <div class="user-info">
+        <span>{{ userName }}</span>
+        <button (click)="logout()" class="logout-btn">Kilépés</button>
+      </div>
+    }
+  </div>
 </nav>
+<app-auth-modal [isOpen]="isModalOpen" (close)="closeModal()"></app-auth-modal>

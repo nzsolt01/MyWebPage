@@ -76,3 +76,33 @@
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+
+.auth-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 20px;
+
+  .login-btn, .logout-btn {
+    background-color: darkblue;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: #1a4ca3;
+    }
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(0, 0, 0);
+  }
+}

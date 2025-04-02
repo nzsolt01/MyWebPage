@@ -1,29 +1,28 @@
 <div class="backdrop" *ngIf="isOpen" (click)="close.emit()"></div>
 <div class="modal" *ngIf="isOpen">
   <h2>{{ isLoginMode ? "Bejelentkezés" : "Regisztráció" }}</h2>
-  <form (ngSubmit)="submitForm()">
+  <form [formGroup]="authForm" (ngSubmit)="submitForm()">
     <label for="email">Email</label>
-    <input type="email" id="email" [(ngModel)]="email" name="email" required />
-
+    <input type="email" id="email" formControlName="email" required />
+    <div class="error" *ngIf="email?.invalid && email?.touched">
+      * Érvénytelen email cím
+    </div>
     <label for="password">Jelszó</label>
-    <input
-      type="password"
-      id="password"
-      [(ngModel)]="password"
-      name="password"
-      required
-    />
+    <input type="password" id="password" formControlName="password" required>
+    <div class="error" *ngIf="password?.invalid && password?.touched">
+      * A jelszónak legalább 6 karakter hosszúnak kell lennie
+    </div>
 
-    <button type="submit">
+    <button type="submit" [disabled]="authForm.invalid">
       {{ isLoginMode ? "Bejelentkezés" : "Regisztráció" }}
     </button>
   </form>
 
   <p (click)="toggleMode()">
     {{
-      isLoginMode
-        ? "Nincs még fiókod? Regisztrálj!"
-        : "Már van fiókod? Jelentkezz be!"
+    isLoginMode
+    ? "Nincs még fiókod? Regisztrálj!"
+    : "Már van fiókod? Jelentkezz be!"
     }}
   </p>
 </div>

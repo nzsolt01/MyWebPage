@@ -8,10 +8,10 @@
   </div>
   <ul class="nav-list">
     <li>
-      <a routerLink="/" routerLinkActive="active">KEZDŐLAP</a>
+      <a routerLink="/home" routerLinkActive="active">KEZDŐLAP</a>
     </li>
-    <li><a routerLink="/rolam" routerLinkActive="active">RÓLAM</a></li>
-    <li><a routerLink="/csomagok" routerLinkActive="active">CSOMAGOK</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">RÓLAM</a></li>
+    <li><a routerLink="/packages" routerLinkActive="active">CSOMAGOK</a></li>
     <li>
       <a routerLink="/adotanacsadas" routerLinkActive="active">ADÓTANÁCSADÁS</a>
     </li>
@@ -20,12 +20,12 @@
   </ul>
   <div class="auth-section">
     @if (!isLoggedIn) {
-      <button (click)="openModal()" class="login-btn">Bejelentkezés</button>
+    <button (click)="openModal()" class="login-btn">Bejelentkezés</button>
     } @else {
-      <div class="user-info">
-        <span>{{ userName }}</span>
-        <button (click)="logout()" class="logout-btn">Kilépés</button>
-      </div>
+    <div class="user-info">
+      <span>{{ userName }}</span>
+      <button (click)="logout()" class="logout-btn">Kilépés</button>
+    </div>
     }
   </div>
 </nav>

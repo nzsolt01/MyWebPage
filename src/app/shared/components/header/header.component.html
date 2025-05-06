@@ -1,32 +1,30 @@
-<nav class="nav">
-  <div class="logo">
-    <img src="assets/logo.png" alt="Németh Zsolt Logo" class="logo-img" />
-    <div class="text-container">
-      <span class="name">Németh Zsolt</span>
+<mat-toolbar color="primary" class="header-toolbar">
+  <div class="header-left">
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <div class="brand">
+      <span class="name">NÉMETH Zsolt</span>
       <span class="profession">tanácsadó</span>
     </div>
   </div>
-  <ul class="nav-list">
-    <li>
-      <a routerLink="/home" routerLinkActive="active">KEZDŐLAP</a>
-    </li>
-    <li><a routerLink="/about" routerLinkActive="active">RÓLAM</a></li>
-    <li><a routerLink="/packages" routerLinkActive="active">CSOMAGOK</a></li>
-    <li>
-      <a routerLink="/adotanacsadas" routerLinkActive="active">ADÓTANÁCSADÁS</a>
-    </li>
-    <li><a routerLink="/blog" routerLinkActive="active">BLOG</a></li>
-    <li><a routerLink="/kapcsolat" routerLinkActive="active">KAPCSOLAT</a></li>
-  </ul>
+
+  <div class="header-nav">
+    <button mat-button routerLink="/home" routerLinkActive="active-link">KEZDŐLAP</button>
+    <button mat-button routerLink="/about" routerLinkActive="active-link">RÓLAM</button>
+    <button mat-button routerLink="/packages" routerLinkActive="active-link">CSOMAGOK</button>
+    <button mat-button routerLink="/adotanacsadas" routerLinkActive="active-link">ADÓTANÁCSADÁS</button>
+    <button mat-button routerLink="/blog" routerLinkActive="active-link">BLOG</button>
+    <button mat-button routerLink="/kapcsolat" routerLinkActive="active-link">KAPCSOLAT</button>
+  </div>
+
   <div class="auth-section">
-    @if (!isLoggedIn) {
-    <button (click)="openModal()" class="login-btn">Bejelentkezés</button>
-    } @else {
+    @if (isLoggedIn) {
     <div class="user-info">
       <span>{{ userName }}</span>
-      <button (click)="logout()" class="logout-btn">Kilépés</button>
+      <button mat-button (click)="logout()">Kilépés</button>
     </div>
+    } @else {
+    <button mat-button (click)="openModal()">Bejelentkezés</button>
     }
   </div>
-</nav>
+</mat-toolbar>
 <app-auth-modal [isOpen]="isModalOpen" (close)="closeModal()"></app-auth-modal>

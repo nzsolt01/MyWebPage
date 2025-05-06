@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ReactiveFormsModule,
@@ -6,22 +6,37 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-auth-modal',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTabsModule,
+  ],
   templateUrl: './auth-modal.component.html',
   styleUrl: './auth-modal.component.scss',
 })
-export class AuthModalComponent {
-  @Input() isOpen = false;
+export class AuthModalComponent implements OnInit {
+  readonly isOpen = input(false);
   @Output() close = new EventEmitter<void>();
 
-  authForm: FormGroup;
+  authForm!: FormGroup;
   isLoginMode = true;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
     this.authForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -50,7 +65,7 @@ export class AuthModalComponent {
     } else {
       console.log('Signing up with:', this.authForm.value);
     }
-    localStorage.setItem('user', this.authForm.value);
+    localStorage.setItem('user', this.email?.value);
     this.close.emit();
   }
 }

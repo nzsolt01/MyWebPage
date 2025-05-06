@@ -1,20 +1,25 @@
-<div class="backdrop" *ngIf="isOpen" (click)="close.emit()"></div>
-<div class="modal" *ngIf="isOpen">
+<div class="backdrop" *ngIf="isOpen()" (click)="close.emit()"></div>
+<div class="modal mat-elevation-z4" *ngIf="isOpen()">
   <h2>{{ isLoginMode ? "Bejelentkezés" : "Regisztráció" }}</h2>
   <form [formGroup]="authForm" (ngSubmit)="submitForm()">
-    <label for="email">Email</label>
-    <input type="email" id="email" formControlName="email" required />
-    <div class="error" *ngIf="email?.invalid && email?.touched">
-      * Érvénytelen email cím
-    </div>
-    <label for="password">Jelszó</label>
-    <input type="password" id="password" formControlName="password" required>
-    <div class="error" *ngIf="password?.invalid && password?.touched">
-      * A jelszónak legalább 6 karakter hosszúnak kell lennie
-    </div>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" required>
+      <mat-error *ngIf="email?.invalid && email?.touched">
+        Érvénytelen email cím
+      </mat-error>
+    </mat-form-field>
 
-    <button type="submit" [disabled]="authForm.invalid">
-      {{ isLoginMode ? "Bejelentkezés" : "Regisztráció" }}
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Jelszó</mat-label>
+      <input matInput type="password" formControlName="password" required>
+      <mat-error *ngIf="password?.invalid && password?.touched">
+        A jelszónak legalább 6 karakter hosszúnak kell lennie
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="authForm.invalid" class="full-width">
+      {{ isLoginMode ? 'Bejelentkezés' : 'Regisztráció' }}
     </button>
   </form>
 

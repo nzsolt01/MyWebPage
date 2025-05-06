@@ -1,108 +1,69 @@
-.nav {
+.header-toolbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: #f8f8f8;
-  padding: 15px 20px;
-}
 
-.logo {
-  display: flex;
-  align-items: center;
-}
+  .header-left {
+    display: flex;
+    align-items: center;
 
-.logo-img {
-  height: 60px; /* Increased logo size */
-  margin-right: 15px;
-}
+    .logo {
+      height: 50px;
+      margin-right: 10px;
+    }
 
-.text-container {
-  display: flex;
-  flex-direction: column; /* Stack name & profession */
-  padding: 15px 20px;
-}
+    .brand {
+      display: flex;
+      flex-direction: column;
 
-.name {
-  font-weight: bold;
-  font-size: 20px; /* Slightly bigger */
-  color: #3A7CA5; /* Dark Blue */
-}
+      .name {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #0d47a1; // Dark blue
+      }
 
-.profession {
-  font-size: 14px;
-  color: #555;
-  margin-top: 2px;
-}
-
-.nav-list {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  padding: 0px 20px;;
-  margin: 0;
-}
-
-.nav-list li {
-  position: relative;
-}
-
-.nav-list a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #333;
-  font-size: 16px;
-}
-
-.nav-list a.active {
-  color: #3A7CA5; /* Dark Blue */
-  font-weight: bold;
-  border-bottom: 2px solid darkblue;
-}
-
-.nav-list a:hover {
-  color: #3A7CA5; /* Dark Blue */
-}
-
-/* Dropdown styles */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background: white;
-  list-style: none;
-  padding: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-.auth-section {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-left: 20px;
-
-  .login-btn, .logout-btn {
-    background-color: darkblue;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background 0.3s ease;
-
-    &:hover {
-      background-color: #1a4ca3;
+      .profession {
+        font-size: 0.9rem;
+        color: #1565c0; // Lighter blue
+      }
     }
   }
 
-  .user-info {
+  .header-nav {
+    display: flex;
+    gap: 15px;
+
+    button {
+      color: #0d47a1;
+      font-weight: 500;
+    }
+
+    .active-link {
+      border-bottom: 2px solid #dfe8f7;
+    }
+  }
+
+  .header-right {
+    button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  .auth-section {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    color: rgb(0, 0, 0);
-  }
+    padding-left: 20px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #0d47a1;
+      font-size: 0.8rem;
+    }
 }

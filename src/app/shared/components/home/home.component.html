@@ -1,13 +1,22 @@
 <div class="home-container">
   <div class="background">
-    <img
-      src="assets/blue-background.webp"
-      alt="Blue Background"
-      class="background-image"
-    />
+    <img src="assets/blue-background.webp" alt="Blue Background" class="background-image" />
     <div class="overlay">
       <h1>Üdvözöllek!</h1>
       <p>Professzionális tanácsadás vállalkozásoknak és egyéni ügyfeleknek.</p>
+      <section id="user-section">
+        <h2>Regisztrált felhasználók</h2>
+        <mat-card>
+          @for (user of users; track $index) {
+          <mat-card-title>{{ user.name.firstname }} {{ user.name.lastname }}</mat-card-title>
+          <mat-card-content>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Felhasználónév:</strong> {{ user.username }}</p>
+            <p><strong>Telefonszám:</strong> {{ user.phone }}</p>
+          </mat-card-content>
+          }
+        </mat-card>
+      </section>
     </div>
   </div>
 </div>
